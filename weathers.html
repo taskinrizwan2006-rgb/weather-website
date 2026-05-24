@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body {
+            background: radial-gradient(circle at top right, #1a3054, #111415 60%);
+            min-height: 100vh;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#b1c7f3",
+                    "surface-container-high": "#282a2b",
+                    "surface-bright": "#373a3b",
+                    "primary-fixed": "#d6e3ff",
+                    "on-secondary-fixed": "#001551",
+                    "on-tertiary-fixed": "#221b00",
+                    "secondary": "#b7c4ff",
+                    "on-tertiary-fixed-variant": "#544600",
+                    "tertiary-fixed-dim": "#e9c400",
+                    "on-surface": "#e1e3e4",
+                    "error-container": "#93000a",
+                    "on-secondary-container": "#9fb1ff",
+                    "on-error-container": "#ffdad6",
+                    "surface-container": "#1d2021",
+                    "on-error": "#690005",
+                    "outline": "#8e9099",
+                    "inverse-surface": "#e1e3e4",
+                    "surface-container-lowest": "#0c0f10",
+                    "on-primary": "#1a3054",
+                    "on-background": "#e1e3e4",
+                    "primary-fixed-dim": "#b1c7f3",
+                    "primary-container": "#0b2447",
+                    "tertiary-fixed": "#ffe16d",
+                    "inverse-on-surface": "#2e3132",
+                    "on-primary-fixed-variant": "#32476c",
+                    "on-secondary-fixed-variant": "#2a418f",
+                    "background": "#111415",
+                    "outline-variant": "#44474e",
+                    "surface-variant": "#323536",
+                    "inverse-primary": "#4a5f85",
+                    "secondary-fixed": "#dce1ff",
+                    "surface-container-highest": "#323536",
+                    "on-primary-container": "#778cb5",
+                    "on-tertiary-container": "#4c3f00",
+                    "secondary-fixed-dim": "#b7c4ff",
+                    "primary": "#b1c7f3",
+                    "tertiary": "#e9c400",
+                    "on-tertiary": "#3a3000",
+                    "on-primary-fixed": "#011b3e",
+                    "surface-container-low": "#191c1d",
+                    "error": "#ffb4ab",
+                    "surface-dim": "#111415",
+                    "tertiary-container": "#c9a900",
+                    "secondary-container": "#2a418f",
+                    "surface": "#111415",
+                    "on-surface-variant": "#c4c6cf"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "16px",
+                    "stack-sm": "4px",
+                    "base": "8px",
+                    "stack-lg": "32px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "data-mono": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-temp": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-caps": ["Inter"]
+            },
+            "fontSize": {
+                    "data-mono": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-temp": ["96px", {"lineHeight": "110%", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="text-on-surface font-body-md overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/10 dark:bg-surface/10 backdrop-blur-[20px] border-b border-white/10">
+<div class="flex justify-between items-center max-w-container-max mx-auto px-margin-desktop py-4">
+<div class="font-headline-md text-headline-md font-bold text-primary">SkyCast</div>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md transition-all duration-300" href="#">Dashboard</a>
+<a class="text-on-surface-variant/70 font-medium font-body-md text-body-md hover:text-primary transition-all duration-300" href="#">Local Forecast</a>
+<a class="text-on-surface-variant/70 font-medium font-body-md text-body-md hover:text-primary transition-all duration-300" href="#">Global Map</a>
+<a class="text-on-surface-variant/70 font-medium font-body-md text-body-md hover:text-primary transition-all duration-300" href="#">15-Day Outlook</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary" style="font-size: 20px;">search</span>
+<input class="bg-white/5 border border-white/10 rounded-full py-2 pl-10 pr-4 text-body-md focus:outline-none focus:border-primary/50 transition-colors w-64" placeholder="Search City..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-on-surface hover:text-primary transition-colors active:scale-95" data-icon="settings">settings</button>
+<button class="material-symbols-outlined text-on-surface hover:text-primary transition-colors active:scale-95" data-icon="account_circle">account_circle</button>
+</div>
+</div>
+</nav>
+<main class="pt-24 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop space-y-stack-lg">
+<!-- Hero Section: Current Weather -->
+<section class="relative w-full rounded-xl overflow-hidden glass-card min-h-[400px] flex flex-col md:flex-row items-center p-stack-lg">
+<div class="absolute inset-0 z-0">
+<img alt="Skyline of San Francisco" class="w-full h-full object-cover opacity-40 mix-blend-overlay" data-alt="A cinematic, wide-angle landscape of San Francisco's skyline during a clear, atmospheric twilight. The sky is a gradient of deep indigo transitioning to soft cyan, with a few wispy, high-altitude clouds catching the last light. The city lights twinkle softly below, creating a serene, high-fidelity atmosphere that emphasizes clarity and technical precision. The lighting is low-key yet vibrant, aligning with the brand's premium dark-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcWX8WxdAT59hXyneae6Xxz7CbrFqC_FNhvblbf0KiXwgtVHeY5_GLPJhl3qMbK4EAY6iYmShRHKOjzdLvwMCcESvmSi2ovnz2jmyW95j9NSgsi3EquUzka5tBKCKVMRDAUHidkjaalTIcdr4LvAKaXV4k_vUbVDpNcysRRQx3_W5YD5Yr4E2i2RNbTpOWjIKHtrY007zir9ig7HRAlxoqWZ7tmf0G6lN-oqBw4LbHvd4FRT7_mO8b9nZP-rgNCNVYMKY59JD1WFdj"/>
+<div class="absolute inset-0 bg-gradient-to-tr from-background via-transparent to-primary/20"></div>
+</div>
+<div class="relative z-10 flex-1 space-y-stack-sm text-center md:text-left">
+<div class="flex items-center justify-center md:justify-start gap-2 mb-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<h2 class="font-headline-md text-headline-md">San Francisco, CA</h2>
+</div>
+<div class="flex flex-col md:flex-row items-center md:items-start gap-6">
+<div class="font-display-temp text-display-temp text-white tracking-tighter">68°</div>
+<div class="space-y-1 pt-4">
+<div class="font-headline-md text-primary">Partly Cloudy</div>
+<div class="font-body-lg text-on-surface-variant">H: 72° L: 54°</div>
+<div class="flex gap-2 mt-2">
+<span class="bg-primary/20 text-primary px-3 py-1 rounded-full font-label-caps text-label-caps border border-primary/30">Air Quality: 42</span>
+<span class="bg-tertiary/20 text-tertiary px-3 py-1 rounded-full font-label-caps text-label-caps border border-tertiary/30">UV: Low</span>
+</div>
+</div>
+</div>
+</div>
+<div class="relative z-10 w-full md:w-auto mt-stack-lg md:mt-0">
+<div class="flex flex-col items-center glass-card p-stack-md rounded-lg border border-white/20">
+<span class="material-symbols-outlined text-primary" style="font-size: 80px; font-variation-settings: 'FILL' 0;">cloud</span>
+<p class="font-body-md mt-2">Perfect for a light jacket</p>
+<button class="mt-4 bg-primary text-on-primary-fixed px-6 py-3 rounded-full font-label-caps text-label-caps font-bold hover:brightness-110 active:scale-95 transition-all">
+                        Full Report
+                    </button>
+</div>
+</div>
+</section>
+<!-- Hourly Forecast Section -->
+<section class="space-y-stack-md">
+<h3 class="font-headline-md text-headline-md flex items-center gap-2">
+<span class="material-symbols-outlined">schedule</span>
+                Today's Hourly
+            </h3>
+<div class="flex overflow-x-auto gap-4 pb-4 hide-scrollbar">
+<!-- Forecast Hourly Items -->
+<script>
+                    const hours = ["Now", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM", "7PM", "8PM", "9PM", "10PM", "11PM", "12AM"];
+                    const temps = [68, 69, 70, 72, 71, 68, 65, 62, 60, 58, 57, 56, 55];
+                    const icons = ["cloud", "cloud", "partly_cloudy_day", "sunny", "sunny", "partly_cloudy_day", "cloud", "cloud", "clear_night", "clear_night", "nights_stay", "nights_stay", "nights_stay"];
+                    
+                    document.currentScript.outerHTML = hours.map((hour, i) => `
+                        <div class="glass-card flex-shrink-0 min-w-[100px] p-stack-md rounded-xl text-center space-y-3 group cursor-pointer transition-all duration-300">
+                            <div class="font-label-caps text-label-caps text-on-surface-variant">${hour}</div>
+                            <span class="material-symbols-outlined text-primary" style="font-size: 32px; font-variation-settings: 'FILL' ${icons[i] === 'sunny' ? 1 : 0};">${icons[i]}</span>
+                            <div class="font-data-mono text-data-mono text-lg font-bold">${temps[i]}°</div>
+                        </div>
+                    `).join('');
+                </script>
+</div>
+</section>
+<!-- Daily Snapshot: Bento Grid -->
+<section class="space-y-stack-md">
+<h3 class="font-headline-md text-headline-md flex items-center gap-2">
+<span class="material-symbols-outlined">dashboard</span>
+                Daily Snapshot
+            </h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<!-- Humidity Card -->
+<div class="glass-card p-stack-md rounded-xl space-y-stack-md">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Humidity</span>
+<span class="material-symbols-outlined text-primary">humidity_low</span>
+</div>
+<div>
+<div class="font-display-temp text-[40px] leading-none">62%</div>
+<div class="font-body-md text-on-surface-variant mt-2">Dew point is 54°</div>
+</div>
+</div>
+<!-- Wind Speed Card -->
+<div class="glass-card p-stack-md rounded-xl space-y-stack-md">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Wind Speed</span>
+<span class="material-symbols-outlined text-primary">air</span>
+</div>
+<div>
+<div class="font-display-temp text-[40px] leading-none">12 <span class="text-xl">mph</span></div>
+<div class="font-body-md text-on-surface-variant mt-2">Gusts up to 18 mph</div>
+</div>
+</div>
+<!-- UV Index Card -->
+<div class="glass-card p-stack-md rounded-xl space-y-stack-md">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant">UV Index</span>
+<span class="material-symbols-outlined text-tertiary">wb_sunny</span>
+</div>
+<div>
+<div class="font-display-temp text-[40px] leading-none">2 <span class="text-xl text-primary">Low</span></div>
+<div class="h-1 w-full bg-white/10 rounded-full mt-4 relative overflow-hidden">
+<div class="absolute inset-y-0 left-0 bg-tertiary w-[20%]"></div>
+</div>
+</div>
+</div>
+<!-- Visibility Card -->
+<div class="glass-card p-stack-md rounded-xl space-y-stack-md">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Visibility</span>
+<span class="material-symbols-outlined text-primary">visibility</span>
+</div>
+<div>
+<div class="font-display-temp text-[40px] leading-none">10 <span class="text-xl">mi</span></div>
+<div class="font-body-md text-on-surface-variant mt-2">Perfectly clear sky</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Secondary Section: Sun Cycle & Map -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="md:col-span-1 glass-card p-stack-lg rounded-xl flex flex-col justify-center items-center text-center">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase">Sun Cycle</h4>
+<div class="relative w-full aspect-square max-w-[200px] flex items-center justify-center">
+<!-- Custom Sun Path SVG using Tailwind for styling -->
+<svg class="absolute inset-0 w-full h-auto" viewbox="0 0 100 50">
+<path d="M 0 50 Q 50 0 100 50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"></path>
+<circle cx="65" cy="18" fill="#e9c400" r="4"></circle>
+</svg>
+<div class="pt-12">
+<div class="font-headline-md text-white">Sunrise</div>
+<div class="font-data-mono text-primary">06:42 AM</div>
+<div class="mt-4">
+<div class="font-headline-md text-white">Sunset</div>
+<div class="font-data-mono text-on-tertiary-fixed-variant">07:54 PM</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md:col-span-2 glass-card rounded-xl relative overflow-hidden min-h-[300px]">
+<div class="absolute top-4 left-4 z-10">
+<div class="bg-surface-container-highest/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-size: 18px;">map</span>
+<span class="font-label-caps text-label-caps">Precipitation Radar</span>
+</div>
+</div>
+<img alt="Precipitation Radar Map" class="w-full h-full object-cover grayscale brightness-50 contrast-125" data-alt="A high-resolution satellite map of the San Francisco Bay Area at night. The land is dark with glowing orange and white arterial city lights, while the Pacific Ocean is a deep, textured navy blue. Transparent cyan weather radar overlays show light precipitation moving in from the coast. The image is crisp, professional, and styled for a luxury meteorology application." data-location="San Francisco" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWW_nl0krB2FK1hSr_pxJySMnKoqYp_6LhsUnKNmUIi3zWxOOusUg2wpFwohqNa5eXp5wh8ULPT2uYRkKLiV4eus6RwAW_G1J6ytmL63ZnU3TYpbHhpAhNlvNtyDTEqJ8WKN6R2OS_wvhkjDhH2oPbYf3ymM2LwLp2WfC2cmR5RXlY48UmPltqIS2sGazusPbIK7q15zBsfIYhlFUSS6LN1ri0staU6aIH7ZyOuYHnshoBQ6UVJRkOB1RIaqhc0p2agodRlueLp4xE"/>
+<div class="absolute inset-0 bg-primary/5 pointer-events-none"></div>
+<div class="absolute bottom-4 right-4 z-10 flex gap-2">
+<button class="bg-surface-container-highest/80 p-2 rounded-lg border border-white/10 material-symbols-outlined hover:text-primary">zoom_in</button>
+<button class="bg-surface-container-highest/80 p-2 rounded-lg border border-white/10 material-symbols-outlined hover:text-primary">zoom_out</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-stack-lg bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto px-margin-desktop py-stack-lg gap-gutter">
+<div class="flex flex-col items-center md:items-start">
+<div class="font-headline-md text-headline-md text-primary mb-2">SkyCast</div>
+<div class="font-label-caps text-label-caps text-secondary dark:text-secondary-fixed">© 2024 SkyCast Meteorology. Atmospheric Clarity.</div>
+</div>
+<div class="flex flex-wrap justify-center gap-gutter">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary transition-colors" href="#">API Access</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary transition-colors" href="#">Contact Support</a>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">public</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">monitoring</span>
+</div>
+</div>
+</footer>
+<!-- FAB (Suppressed as per rules for detailed dashboard view, but keeping logic in mind) -->
+<script>
+        // Micro-interaction: Active Navigation Logic
+        // The page is "Dashboard", so Dashboard link is already styled correctly in the template.
+
+        // Micro-interaction: Simple Parallax/Fade-in on scroll
+        const glassCards = document.querySelectorAll('.glass-card');
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        glassCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+            observer.observe(card);
+        });
+    </script>
+</body></html>
